@@ -1,18 +1,17 @@
 fs = require("fs");
 
-const schemaJsm = `"use strict";
-
+const schemaJsm = `
 // created by build-jsm.js
 
-const EXPORTED_SYMBOLS=["schema"];
+var EXPORTED_SYMBOLS=["schema"];
 
-const schema=${fs.readFileSync("schema.json","utf8")}
+var schema = ${fs.readFileSync("schema.json","utf8")}
 `
 
 const ajvJsm = `
 // created by build-jsm.js
 
-const EXPORTED_SYMBOLS = ['Ajv'];
+var EXPORTED_SYMBOLS = ['Ajv'];
 
 ${fs.readFileSync("./node_modules/ajv/dist/ajv.min.js","utf8")}
 `

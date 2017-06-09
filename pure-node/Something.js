@@ -16,10 +16,13 @@ function validate (data, schema) {
 
 class Something {
   constructor(config) {
+    debugger;
     const validation = validate(config, schema);
     if (!validation.valid) {
       throw new Error(validation.errors);
     }
+    this.someField = config.someField;
+    this.style = "pure-node";
   }
   do () {
     console.log(`my field is: ${this.someField}`);
@@ -27,6 +30,5 @@ class Something {
   }
 }
 
-const something = new Something({someField: aValue});
-
-module.exports = something;
+const something = new Something({someField: "aValue"});
+module.exports = {something: something};

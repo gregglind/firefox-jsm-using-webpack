@@ -31,14 +31,13 @@ const log = (function makeLogger() {
   const log = Log.repository.getLogger("something");
   log.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
   log.level = Log.Level.Debug;
+  return log;
 })();
-
 
 function validate (data, schema) {
   var valid = ajv.validate(schema, data);
   return {valid, errors:  ajv.errors || []};
 }
-
 
 class Something {
   constructor(config) {
@@ -46,6 +45,8 @@ class Something {
     if (!validation.valid) {
       throw new Error(validation.errors);
     }
+    this.someField = config.someField;
+    this.style = "Cu.import";
   }
   do () {
     // note: firefox logging
@@ -58,5 +59,5 @@ class Something {
   }
 }
 
-const something = new Something({someField: aValue});
-const EXPORTED_SYMBOLS = ['something'];
+var something = new Something({someField: "aValue"});
+var EXPORTED_SYMBOLS = ['something'];

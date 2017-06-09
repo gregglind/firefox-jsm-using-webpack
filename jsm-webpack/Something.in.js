@@ -26,6 +26,7 @@ const log = (function makeLogger() {
   const log = Log.repository.getLogger("something");
   log.addAppender(new Log.ConsoleAppender(new Log.BasicFormatter()));
   log.level = Log.Level.Debug;
+  return log;
 })();
 
 class Something {
@@ -34,6 +35,9 @@ class Something {
     if (!validation.valid) {
       throw new Error(validation.errors);
     }
+    this.someField = config.someField;
+    this.style = "webpacked-jsm";
+
   }
   do () {
     log.debug(`my field is: ${this.someField}`);
@@ -42,5 +46,5 @@ class Something {
 }
 
 // replace all the EXPORTS with `this` things.
-this.something = new Something({someField: aValue});
+this.something = new Something({someField: "aValue"});
 this.EXPORTED_SYMBOLS = ["something"];

@@ -1,11 +1,9 @@
-"use strict";
 
 // created by build-jsm.js
 
-const EXPORTED_SYMBOLS=["schema"];
+var EXPORTED_SYMBOLS=["schema"];
 
-const schema={
-  "$schema": "http://json-schema.org/draft-04/schema#",
+var schema = {
   "type": "object",
   "properties": {
     "someField": {

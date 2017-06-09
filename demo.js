@@ -1,5 +1,18 @@
 const p = require("process").cwd()
 
+console.log(`/** First, pure-node
+
+> var {something} = require("./pure-node/Something.js");
+> console.log(something.style)
+> something.do();
+`)
+var {something} = require("./pure-node/Something.js");
+console.log(something.style)
+something.do();
+
+console.log('*/');
+
+
 const script = `
 
 /** Demonstration of Webpacked jsm usage.
@@ -9,24 +22,24 @@ const script = `
   *
   **/
 
-path = "${p}";
+var path = "${p}";
 
 // Cu.import style
-p = "file://" + path + "/Cu.import/Something.jsm";
+var p = "file://" + path + "/Cu.import/Something.jsm";
 Cu.unload(p);
 Services.obs.notifyObservers(null, "startupcache-invalidate", null);
-var {something} = Cu.import(p);
-console.log(something.style)
+var {something} = Cu.import(p, {});
+console.log("STYLE:",something.style)
 something.do();
 something.unload();
 
 
 // Webpacked
-p = "file://" + path + "/webpacked-jsm/Something.jsm";
+var p = "file://" + path + "/jsm-webpack/Something.jsm";
 Cu.unload(p);
 Services.obs.notifyObservers(null, "startupcache-invalidate", null);
-var {something} = Cu.import(p);
-console.log(something.style)
+var {something} = Cu.import(p, {});
+console.log("STYLE:",something.style)
 something.do();
 
 `
