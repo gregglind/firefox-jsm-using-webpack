@@ -1,5 +1,7 @@
 # Demonstration of how to use Webpack to make `.jsm` Firefox Modules
 
+Use `webpack` to make single-file jsm's that are `Cu.import`-able
+
 ## tl;dr - Run the demonstration
 
 `npm run demo`
@@ -12,6 +14,8 @@ This will print code for using the modules from a Firefox debugger prompt:
 
 - pure `Cu.import` style (which is tedious)
 - webpacked into a `.jsm`
+
+**jsm-webpack/Something.in.js** is the final file.
 
 ## Goal:
 
