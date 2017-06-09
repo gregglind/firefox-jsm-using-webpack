@@ -8,10 +8,10 @@ This will run
 
 - `pure-node` style. Works great in node, but not in Firefox!
 
-This will print, code for using the modules from a Firefox debugger prompt:
+This will print code for using the modules from a Firefox debugger prompt:
 
 - pure `Cu.import` style (which is tedious)
-- webpacked into a jsm
+- webpacked into a `.jsm`
 
 ## Goal:
 
@@ -21,6 +21,7 @@ This will print, code for using the modules from a Firefox debugger prompt:
 ## Problems
 - `Components.utils.import` doesn't know about JSON files.
 - Making 'fake' `.jsm` files is fragile and silly seeming.  (See `build-jsm.js` for examples)
+- using `Cu.import` from libraries requires tracking unloading for all of those as well.
 
 ## Solution using `webpack`
 
@@ -33,7 +34,7 @@ This will print, code for using the modules from a Firefox debugger prompt:
 
 ### Potential improvements
 
--
+- webpack makes 1 big file.  If you have pieces that don't always need loading, consider breaking them up.
 
 
 
